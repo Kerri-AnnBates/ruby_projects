@@ -39,6 +39,8 @@ class LibraryApp
       list_favorite_books
     when 5
       mark_favorite
+    when 6
+      mark_finished
     when 7
       puts "Goodbye!"
       exit
@@ -80,5 +82,23 @@ class LibraryApp
   def mark_favorite
     return "No books in the library to choose from." if @library.books.empty?
 
+    puts "Choose book to mark favorite: "
+    @library.books.each_with_index { |book, i|
+      puts "#{i + 1}. #{book.title}"
+    }
+
+    book = @library.books[gets.chomp.to_i - 1]
+    book.mark_as_favorite
+    puts "#{book.title} book marked as favorite!"
+  end
+
+  def mark_finished
+    return "No books in the library to choose from." if @library.books.empty?
+    puts "Choose book to mark finished: "
+    @library.books.each_with_index do |book, i|
+      puts "#{i + 1}. #{book.title}"
+    end
+    book = @library.books[gets.chomp.to_i - 1]
+    book.mark_as_finished
   end
 end

@@ -22,9 +22,9 @@ class LibraryApp
     puts "4. List favorite books"
     puts "5. Mark book as favorite"
     puts "6. Mark book as finished"
-    puts "5. Search for a book by title"
-    puts "6. Search for a book by author"
-    puts "7. Exit"
+    puts "7. Search for a book by title"
+    puts "8. Search for a book by author"
+    puts "9. Exit"
   end
 
   def handle_input(input)
@@ -42,6 +42,10 @@ class LibraryApp
     when 6
       mark_finished
     when 7
+      search_book_by_title
+    when 8
+      search_book_by_author
+    when 9
       puts "Goodbye!"
       exit
     else
@@ -100,5 +104,17 @@ class LibraryApp
     end
     book = @library.books[gets.chomp.to_i - 1]
     book.mark_as_finished
+  end
+
+  def search_book_by_title
+    puts "Enter book title: "
+    title = gets.chomp
+    @library.search_book_title(title)
+  end
+
+  def search_book_by_author
+    puts "Enter book author: "
+    author = gets.chomp
+    @library.search_book_author(author)
   end
 end

@@ -35,6 +35,10 @@ class Library
     @finished.each { |book| puts book.summary }
   end
 
+  def list_unread
+    @books.select{|book| !book.is_finished? }
+  end
+
   def search_book_title(title)
     results = @books.select do |book|
       book.title.downcase.include?(title.downcase)

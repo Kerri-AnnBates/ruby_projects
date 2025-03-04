@@ -14,6 +14,10 @@ class Library
     @books << book
   end
 
+  def remove_book(book)
+    @books.delete(book)
+  end
+
   def list_books
     @books.each do |book|
       puts book.summary

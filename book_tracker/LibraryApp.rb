@@ -16,23 +16,24 @@ class LibraryApp
   # Display menu options to the user
   def display_menu
     puts "\nChoose an option:"
-    puts "1. Add a new book"
-    puts "2. List all books"
+    puts "1. List all books"
+    puts "2. Add a new book"
     puts "3. List finished books"
     puts "4. List favorite books"
     puts "5. Mark book as favorite"
     puts "6. Mark book as finished"
     puts "7. Search for a book by title"
     puts "8. Search for a book by author"
-    puts "9. Exit"
+    puts "9. Remove a book from library"
+    puts "10. Exit"
   end
 
   def handle_input(input)
     case input
     when 1
-      add_book
-    when 2
       list_books
+    when 2
+      add_book
     when 3
       list_finished_books
     when 4
@@ -46,6 +47,8 @@ class LibraryApp
     when 8
       search_book_by_author
     when 9
+      remove_book
+    when 10
       puts "Goodbye!"
       exit
     else
@@ -68,7 +71,26 @@ class LibraryApp
     puts "Book created successfully"
   end
 
+  def remove_book
+    puts "Enter book title: "
+    title = gets.chomp
+
+    book = @library.books.find { |book| book.title == title }
+    removed = @library.remove_book(book)
+
+    if removed != nil
+      puts "Book deleted successfully"
+    else
+      puts "Book not deleted."
+    end
+  end
+
   def list_books
+    if @library.books.empty?
+      puts "There are no books in library!"
+      return
+    end
+
     puts "List of all books:"
     @library.list_books
   end

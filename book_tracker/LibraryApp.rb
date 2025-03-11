@@ -30,24 +30,15 @@ class LibraryApp
 
   def handle_input(input)
     case input
-    when 1
-      list_books
-    when 2
-      add_book
-    when 3
-      list_finished_books
-    when 4
-      list_favorite_books
-    when 5
-      mark_favorite
-    when 6
-      mark_finished
-    when 7
-      search_book_by_title
-    when 8
-      search_book_by_author
-    when 9
-      remove_book
+    when 1 then list_books
+    when 2 then add_book
+    when 3 then list_finished_books
+    when 4 then list_favorite_books
+    when 5 then mark_favorite
+    when 6 then mark_finished
+    when 7 then search_book_by_title
+    when 8 then search_book_by_author
+    when 9 then remove_book
     when 10
       puts "Goodbye!"
       exit

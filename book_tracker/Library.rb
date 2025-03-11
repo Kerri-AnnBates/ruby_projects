@@ -19,8 +19,8 @@ class Library
   end
 
   def list_books
-    @books.each do |book|
-      puts book.summary
+    @books.each_with_index do |book, idx|
+      puts "#{ idx + 1 }. " + book.summary
     end
   end
 

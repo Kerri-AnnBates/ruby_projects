@@ -31,6 +31,6 @@ class Book
   end
 
   def summary
-    puts "#{@title} by #{@author.name} (#{@pages} pages)"
+    "#{@title} by #{@author.name} (#{@pages} pages)"
   end
 end
